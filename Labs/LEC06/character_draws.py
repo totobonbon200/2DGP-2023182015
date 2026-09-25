@@ -1,13 +1,13 @@
-# 실습 과제 진행
+def move_circle():
+    pass
 
-#필요한 라이브러리 함수
-from pico2d import *
-import math
+def move_rectangle():
+    pass
 
-# (800, 600) 캔버스 실행
-open_canvas(800, 600)
+def move_triangle():
+    pass
 
-
-
-# 캔버스 종료
-close_canvas()
+while True:
+    move_circle()
+    move_rectangle()
+    move_triangle()
