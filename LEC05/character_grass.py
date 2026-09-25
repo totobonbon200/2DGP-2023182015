@@ -1,62 +1,18 @@
+#필요한 라이브러리 함수
 from pico2d import *
 import math
 
+# (800, 600) 캔버스 실행
 open_canvas(800, 600)
 
-
-# 여기를 채우시오.
+# 실행에 필요한 이미지 로드
 grass = load_image('grass.png')
 character = load_image('character.png')
 
+# 확인용 코드
 grass.draw(400, 30)
 character.draw(400, 90)
+delay(10)
 
-r = 80
-a = 0
-while 1:
-    for i in range(40):
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(300 + (r * math.cos(a)), 200 + (r * math.sin(a)))
-        update_canvas()
-        a += 1
-        delay(0.1)
-
-#사각형
-j = 0
-x = 100
-y = 100
-while 1:
-    
-    for i in range(40):
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(x, 90 + y)
-        update_canvas()
-        x += 4
-        delay(0.01)
-    for i in range(40):
-            clear_canvas()
-            grass.draw(400, 30)
-            character.draw(x, 90 + y)
-            update_canvas()
-            y += 4
-            delay(0.01)
-    for i in range(40):
-            clear_canvas()
-            grass.draw(400, 30)
-            character.draw(x, 90 + y)
-            update_canvas()
-            x -= 4
-            delay(0.01)
-    for i in range(40):
-            clear_canvas()
-            grass.draw(400, 30)
-            character.draw(x, 90 + y)
-            update_canvas()
-            y -= 4
-            delay(0.01)
-
-
-
+# 캔버스 종료
 close_canvas()
