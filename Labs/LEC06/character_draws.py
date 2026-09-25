@@ -1,3 +1,6 @@
+from pico2d import *
+import math
+
 def move_circle():
     print(f"circle")
     pass
