@@ -9,6 +9,8 @@ character_x = canvas_x / 2
 character_y = canvas_y / 2
 # 딜레이
 dy = 0.01
+# 삼각형 각도
+steps = 120
 # 삼각형 점
 point1 = [100, 100]
 point2 = [700, 100]
@@ -62,14 +64,11 @@ def move_rectangle():
     move_right2()
 
 def move_between(start_x, start_y, end_x, end_y):
-    steps = 120
     for step in range(steps + 1):
         t = step / steps
         x = start_x + (end_x - start_x) * t
         y = start_y + (end_y - start_y) * t
         draw_character(x, y)
-
-
 
 def move_triangle():
     move_between(point1[0], point1[1], point2[0], point2[1])
