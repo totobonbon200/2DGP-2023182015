@@ -49,12 +49,15 @@ def move_rectangle():
     move_left()
     move_top()
 
+def move_between(start_x, start_y, end_x, end_y):
+    draw_character(x, y)
+
 def move_triangle():
     pass
 
 while True:
     move_circle()
     move_rectangle()
-    move_triangle()
+    #move_triangle()
 
 close_canvas()
