@@ -73,8 +73,8 @@ def move_between(start_x, start_y, end_x, end_y):
 
 def move_triangle():
     move_between(point1[0], point1[1], point2[0], point2[1])
-    move_between(point2[0], point2[1], 400, 500)
-    move_between(400, 500, point1[0], point1[1])
+    move_between(point2[0], point2[1], point3[0], point3[1])
+    move_between(point3[0], point3[1], point1[0], point1[1])
 
 while True:
     #move_circle()
