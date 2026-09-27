@@ -44,7 +44,10 @@ def move_left():
         draw_character(50, y)
 
 def move_rectangle():
-    pass
+    move_right()
+    move_bottom()
+    move_left()
+    move_top()
 
 def move_triangle():
     pass
