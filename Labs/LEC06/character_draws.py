@@ -50,9 +50,12 @@ def move_rectangle():
     move_top()
 
 def move_between(start_x, start_y, end_x, end_y):
+    steps = 120
+    #for step in range(steps + 1):
     draw_character(x, y)
 
 def move_triangle():
+    
     pass
 
 while True:
