@@ -31,3 +31,5 @@ while True:
     delay(0.5)
     a = a + 1
     pass
+
+close_canvas()
