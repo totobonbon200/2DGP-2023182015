@@ -31,8 +31,12 @@ def move_top():
     for x in range(50, 751, 5):
         draw_character(x, 550)
 
-def move_right():
-    for y in range(550, 49, -5):
+def move_right1():
+    for y in range(300, 49, -5):
+        draw_character(750, y)
+
+def move_right2():
+    for y in range(550, 300, -5):
         draw_character(750, y)
 
 def move_bottom():
@@ -44,10 +48,11 @@ def move_left():
         draw_character(50, y)
 
 def move_rectangle():
-    move_right()
+    move_right1()
     move_bottom()
     move_left()
     move_top()
+    move_right2()
 
 def move_between(start_x, start_y, end_x, end_y):
     steps = 120
@@ -55,7 +60,7 @@ def move_between(start_x, start_y, end_x, end_y):
         t = step / steps
         x = start_x + (end_x - start_x) * t
         y = start_y + (end_y - start_y) * t
-    draw_character(x, y)
+        draw_character(x, y)
 
 def move_triangle():
     move_between(100, 100, 700, 100)
