@@ -14,34 +14,29 @@ open_canvas(canvas_x, canvas_y)
 grass = load_image('grass.png')
 character = load_image('character.png')
 
+def draw_character(x, y):
+    clear_canvas()
+    character.draw(x, y)
+    update_canvas()
+    delay(0.01)
+
 def move_circle():
-    print(f"circle ({math.cos(a)}, {math.sin(a)})")
-    pass
+    for degree in range(360):
+        theta = math.radians(degree)
+        x = character_x + 200 * math.cos(theta)
+        y = character_y + 200 * math.sin(theta)
+        draw_character(x, y)
+
 
 def move_rectangle():
-    print(f"rectangle")
     pass
 
 def move_triangle():
-    print(f"triangle")
     pass
 
-clear_canvas()
-character.draw(character_x, character_y)
-update_canvas()
-
-# 바뀌는 캐릭터 위치
-a = 0
 while True:
-    clear_canvas()
-    character.draw(character_x, character_y)
-    update_canvas()
-
     move_circle()
     move_rectangle()
     move_triangle()
-    delay(0.5)
-    a = a + 1
-    pass
 
 close_canvas()
