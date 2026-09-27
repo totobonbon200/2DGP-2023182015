@@ -10,9 +10,7 @@ character = load_image('character.png')
 grass.draw(400, 30)
 character.draw(400, 90)
 
-for x in range(0,9):
-    for y in range(0,7):
-        character.draw(x * 100, y * 100)
+
 
 
 update_canvas()

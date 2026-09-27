@@ -26,11 +26,14 @@ def move_triangle():
 
 
 
-
 # 바뀌는 캐릭터 위치
 a = 0
 while True:
-    
+    clear_canvas()
+    grass.draw(400, 30)
+    character.draw(400, 90)
+    update_canvas()
+
     move_circle()
     move_rectangle()
     move_triangle()
