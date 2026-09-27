@@ -9,6 +9,10 @@ character_x = canvas_x / 2
 character_y = canvas_y / 2
 # 딜레이
 dy = 0.01
+# 삼각형 점
+point1 = {100, 100}
+point2 = {700, 100}
+point3 = {400, 500}
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
@@ -64,6 +68,8 @@ def move_between(start_x, start_y, end_x, end_y):
         x = start_x + (end_x - start_x) * t
         y = start_y + (end_y - start_y) * t
         draw_character(x, y)
+
+
 
 def move_triangle():
     move_between(100, 100, 700, 100)
