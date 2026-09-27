@@ -15,7 +15,7 @@ grass = load_image('grass.png')
 character = load_image('character.png')
 
 def move_circle():
-    print(f"circle")
+    print(f"circle ({math.cos(a)}, {math.sin(a)})")
     pass
 
 def move_rectangle():
