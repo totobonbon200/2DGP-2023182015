@@ -4,6 +4,8 @@ import math
 # 캔버스 크기
 canvas_x = 800
 canvas_y = 600
+character_x = canvas_x / 2
+character_y = canvas_y / 2
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
@@ -24,14 +26,15 @@ def move_triangle():
     print(f"triangle")
     pass
 
-
+clear_canvas()
+character.draw(character_x, character_y)
+update_canvas()
 
 # 바뀌는 캐릭터 위치
 a = 0
 while True:
     clear_canvas()
-    grass.draw(400, 30)
-    character.draw(400, 90)
+    character.draw(character_x, character_y)
     update_canvas()
 
     move_circle()
