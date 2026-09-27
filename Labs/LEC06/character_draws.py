@@ -4,8 +4,11 @@ import math
 # 캔버스 크기
 canvas_x = 800
 canvas_y = 600
+# 캐릭터 위치
 character_x = canvas_x / 2
 character_y = canvas_y / 2
+# 딜레이
+dy = 0.01
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
@@ -18,7 +21,7 @@ def draw_character(x, y):
     clear_canvas()
     character.draw(x, y)
     update_canvas()
-    delay(0.01)
+    delay(dy)
 
 def move_circle():
     for degree in range(360):
