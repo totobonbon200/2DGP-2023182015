@@ -58,6 +58,8 @@ def move_between(start_x, start_y, end_x, end_y):
     draw_character(x, y)
 
 def move_triangle():
+    move_between(100, 100, 700, 100)
+    
     pass
 
 while True:
