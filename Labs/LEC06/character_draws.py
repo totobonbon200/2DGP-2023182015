@@ -56,7 +56,7 @@ def move_top2():
 
 def move_right():
     print(f"right")
-    for y in range(550, 50, -20):
+    for y in range(rec_move_r[0], rec_move_r[1], -20):
         draw_character(750, y)
     pass
 
