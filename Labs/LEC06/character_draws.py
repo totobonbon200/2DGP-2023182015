@@ -52,6 +52,13 @@ def move_rectangle():
     move_left()
     pass
 
+def move_between(start_x, start_y, end_x, end_y):
+    for step in range(120 + 1):
+        t = step / 120
+        x = start_x + (end_x - start_x) * t
+        y = start_y + (end_y - start_y) * t
+        draw_character(x, y)
+
 def move_triangle():
     move_between(400, 550, 750, 50)
     move_between(750, 50, 50, 50)
@@ -59,7 +66,7 @@ def move_triangle():
     pass
 
 while True:
-    #move_circle()
+    move_circle()
     move_rectangle()
     move_triangle()
     break
