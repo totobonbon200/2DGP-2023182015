@@ -80,8 +80,8 @@ def move_between(start_x, start_y, end_x, end_y):
 
 def move_triangle():
     move_between(tri_point1[0], tri_point1[1], tri_point2[0], tri_point2[1])
-    move_between(tri_point2[0], tri_point2[1], 50, 50)
-    move_between(50, 50, tri_point1[0], tri_point1[1])
+    move_between(tri_point2[0], tri_point2[1], tri_point3[0], tri_point3[1])
+    move_between(tri_point3[0], tri_point3[1], tri_point1[0], tri_point1[1])
     pass
 
 while True:
