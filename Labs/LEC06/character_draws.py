@@ -50,7 +50,7 @@ def move_top1():
 
 def move_top2():
     print(f"top")
-    for x in range(50, 400, 20):
+    for x in range(rec_move_t2[0], rec_move_t2[1], 20):
         draw_character(x, 550)
     pass
 
