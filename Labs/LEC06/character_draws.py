@@ -11,6 +11,8 @@ idx = 0.05
 tri_point1 = [400, 550]
 tri_point2 = [750, 50]
 tri_point3 = [50, 50]
+# 삼각형 각도
+steps = 120
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
