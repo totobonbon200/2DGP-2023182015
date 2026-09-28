@@ -7,6 +7,9 @@ canvas_y = 600
 # 딜레이 변수
 idx = 0.05
 
+# 삼각형 위치 변수
+point1 = [400, 550]
+
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
 
