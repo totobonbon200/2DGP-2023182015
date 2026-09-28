@@ -69,7 +69,7 @@ while True:
     move_circle()
     move_rectangle()
     move_triangle()
-    break
+    print(f"cycling")
     pass
 
 close_canvas()
