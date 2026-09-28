@@ -8,7 +8,7 @@ canvas_y = 600
 idx = 0.05
 
 # 캔버스 생성
-open_canvas(800, 600)
+open_canvas(canvas_x, canvas_y)
 
 
 # 이미지 로드
