@@ -10,6 +10,7 @@ idx = 0.05
 # 삼각형 위치 변수
 tri_point1 = [400, 550]
 tri_point2 = [750, 50]
+tri_point3 = [50, 50]
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
