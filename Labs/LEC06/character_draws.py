@@ -53,6 +53,7 @@ def move_rectangle():
     pass
 
 def move_triangle():
+    move_between(400, 550, 750, 50)
     pass
 
 while True:
