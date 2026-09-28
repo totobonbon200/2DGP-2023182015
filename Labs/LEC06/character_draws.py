@@ -11,6 +11,7 @@ idx = 0.05
 rec_move_t1 = [400, 750]
 rec_move_t2 = [50, 400]
 rec_move_r = [550, 50]
+rec_move_b = [750, 50]
 
 # 삼각형 위치 변수
 tri_point1 = [400, 550]
