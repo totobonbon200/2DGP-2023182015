@@ -21,9 +21,15 @@ def move_circle():
         draw_character(x, y)
     pass
 
-def move_top():
+def move_top1():
     print(f"top")
-    for x in range(50, 750, 20):
+    for x in range(400, 750, 20):
+        draw_character(x, 550)
+    pass
+
+def move_top2():
+    print(f"top")
+    for x in range(50, 400, 20):
         draw_character(x, 550)
     pass
 
@@ -46,10 +52,11 @@ def move_left():
     pass
 
 def move_rectangle():
-    move_top()
+    move_top1()
     move_right()
     move_bottom()
     move_left()
+    move_top2()
     pass
 
 def move_between(start_x, start_y, end_x, end_y):
