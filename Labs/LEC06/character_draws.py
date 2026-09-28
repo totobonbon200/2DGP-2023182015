@@ -74,8 +74,8 @@ def move_rectangle():
     pass
 
 def move_between(start_x, start_y, end_x, end_y):
-    for step in range(120 + 1):
-        t = step / 120
+    for step in range(steps + 1):
+        t = step / steps
         x = start_x + (end_x - start_x) * t
         y = start_y + (end_y - start_y) * t
         draw_character(x, y)
