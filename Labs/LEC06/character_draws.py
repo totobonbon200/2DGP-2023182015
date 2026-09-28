@@ -8,7 +8,8 @@ canvas_y = 600
 idx = 0.05
 
 # 삼각형 위치 변수
-point1 = [400, 550]
+tri_point1 = [400, 550]
+tri_point2 = [750, 50]
 
 # 캔버스 생성
 open_canvas(canvas_x, canvas_y)
