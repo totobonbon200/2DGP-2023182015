@@ -79,9 +79,9 @@ def move_between(start_x, start_y, end_x, end_y):
         draw_character(x, y)
 
 def move_triangle():
-    move_between(400, 550, 750, 50)
+    move_between(tri_point1[0], tri_point1[1], 750, 50)
     move_between(750, 50, 50, 50)
-    move_between(50, 50, 400, 550)
+    move_between(50, 50, tri_point1[0], tri_point1[1])
     pass
 
 while True:
