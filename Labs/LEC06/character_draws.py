@@ -68,7 +68,7 @@ def move_bottom():
 
 def move_left():
     print(f"left")
-    for y in range(50, 550, 20):
+    for y in range(rec_move_l[0], rec_move_l[1], 20):
         draw_character(50, y)
     pass
 
