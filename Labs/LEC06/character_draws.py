@@ -1,10 +1,15 @@
 from pico2d import *
 import math
 
-# 캔버스 생성
-open_canvas(800, 600)
+# 캔버스 변수
+canvas_x = 800
+canvas_y = 600
 # 딜레이 변수
 idx = 0.05
+
+# 캔버스 생성
+open_canvas(800, 600)
+
 
 # 이미지 로드
 character = load_image('character.png')
