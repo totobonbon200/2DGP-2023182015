@@ -7,20 +7,24 @@ open_canvas(800, 600)
 # 이미지 로드
 character = load_image('character.png')
 
+def draw_character(x, y):
+    clear_canvas()
+    character.draw(x, y)
+    update_canvas()
+    delay(0.05)
 
 def move_circle():
-    for degree in range(360):
+    for degree in range(0, 360, 20):
         theta = math.radians(degree)
         x = 400 + 200 * math.cos(theta)
         y = 300 + 200 * math.sin(theta)
-        clear_canvas()
-        character.draw(x, y)
-        update_canvas()
-        delay(0.05)
+        draw_character(x, y)
     pass
 
 def move_top():
     print(f"top")
+    for x in range(50, 750, 20):
+        draw_character(x, 550)
     pass
 
 def move_right():
