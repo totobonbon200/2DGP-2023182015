@@ -3,6 +3,8 @@ import math
 
 # 캔버스 생성
 open_canvas(800, 600)
+# 딜레이 변수
+idx = 0.05
 
 # 이미지 로드
 character = load_image('character.png')
