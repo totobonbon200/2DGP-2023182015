@@ -103,6 +103,23 @@ def advance_playback(state, now):
 	return state
 
 
+def draw_frame(sprite_sheet, state):
+	clear_canvas()
+	left, bottom, width, height = ANIMATIONS[state['animation_index']]['frames'][state['frame_index']]
+	display_size = max(FRAME_SIZE * 2, CANVAS_HEIGHT * 0.6)
+	sprite_sheet.clip_draw(
+		left,
+		bottom,
+		width,
+		height,
+		CANVAS_WIDTH // 2,
+		CANVAS_HEIGHT // 2,
+		display_size,
+		display_size,
+	)
+	update_canvas()
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
@@ -120,6 +137,7 @@ def main():
 
 			if running:
 				state = advance_playback(state, now)
+				draw_frame(sprite_sheet, state)
 				delay(1 / 60)
 	finally:
 		close_canvas()
