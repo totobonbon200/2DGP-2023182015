@@ -28,6 +28,7 @@ ANIMATIONS = [
 	{'name': '절벽 비틀거림 / 매달리기', 'frames': row_frames(3, range(16))},
 	{'name': '던지기', 'frames': row_frames(4, range(16))},
 	{'name': '문 들어가기 / 나오기', 'frames': row_frames(5, range(16))},
+	{'name': '사다리 / 밀기', 'frames': row_frames(6, range(16))},
 ]
 
 
