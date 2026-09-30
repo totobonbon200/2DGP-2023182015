@@ -31,6 +31,7 @@ ANIMATIONS = [
 	{'name': '사다리 / 밀기', 'frames': row_frames(6, range(16))},
 	{'name': '밧줄 / 숙였다 일어서기', 'frames': row_frames(7, range(16))},
 	{'name': '위 보기', 'frames': row_frames(8, range(16))},
+	{'name': '점프', 'frames': row_frames(9, range(16))},
 ]
 
 
