@@ -17,6 +17,15 @@ def frame_rect(row, column, width=FRAME_SIZE, height=FRAME_SIZE):
 	return column * FRAME_SIZE, row * FRAME_SIZE, width, height
 
 
+def row_frames(row, columns):
+	return [frame_rect(row, column) for column in columns]
+
+
+ANIMATIONS = [
+	{'name': '걷기 / 수영', 'frames': row_frames(0, range(16))},
+]
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
