@@ -83,6 +83,12 @@ def handle_keydown(key, state, now):
 
 
 def advance_playback(state, now):
+	if state['pause_until']:
+		if now < state['pause_until']:
+			return state
+		next_animation = (state['animation_index'] + 1) % len(ANIMATIONS)
+		state = reset_playback_state(next_animation, now)
+
 	if now - state['last_frame_time'] < FRAME_DURATION:
 		return state
 
