@@ -33,6 +33,7 @@ ANIMATIONS = [
 	{'name': '위 보기', 'frames': row_frames(8, range(16))},
 	{'name': '점프', 'frames': row_frames(9, range(16))},
 	{'name': '유령 이동 / 발사', 'frames': row_frames(10, range(16))},
+	{'name': '낙하', 'frames': row_frames(11, range(16))},
 ]
 
 
