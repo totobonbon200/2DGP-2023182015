@@ -23,6 +23,7 @@ def row_frames(row, columns):
 
 ANIMATIONS = [
 	{'name': '걷기 / 수영', 'frames': row_frames(0, range(16))},
+	{'name': '숙이기 / 숙여서 이동', 'frames': row_frames(1, range(16))},
 ]
 
 
