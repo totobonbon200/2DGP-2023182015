@@ -7,6 +7,7 @@ from pico2d import *
 CANVAS_WIDTH = 800
 CANVAS_HEIGHT = 600
 FRAME_SIZE = 128
+SHEET_HEIGHT = 2048
 FRAME_DURATION = 0.1
 REPEAT_COUNT = 5
 PAUSE_DURATION = 1.0
@@ -14,7 +15,8 @@ ASSET_PATH = Path(__file__).with_name('spelunky_animation_sheet.png')
 
 
 def frame_rect(row, column, width=FRAME_SIZE, height=FRAME_SIZE):
-	return column * FRAME_SIZE, row * FRAME_SIZE, width, height
+	bottom = SHEET_HEIGHT - (row + 1) * FRAME_SIZE
+	return column * FRAME_SIZE, bottom, width, height
 
 
 def row_frames(row, columns):
