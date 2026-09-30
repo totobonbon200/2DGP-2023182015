@@ -58,6 +58,16 @@ KEY_TO_ANIMATION = {
 }
 
 
+def reset_playback_state(animation_index, now):
+	return {
+		'animation_index': animation_index,
+		'frame_index': 0,
+		'repeat_count': 0,
+		'last_frame_time': now,
+		'pause_until': 0.0,
+	}
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
