@@ -13,6 +13,10 @@ PAUSE_DURATION = 1.0
 ASSET_PATH = Path(__file__).with_name('spelunky_animation_sheet.png')
 
 
+def frame_rect(row, column, width=FRAME_SIZE, height=FRAME_SIZE):
+	return column * FRAME_SIZE, row * FRAME_SIZE, width, height
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
