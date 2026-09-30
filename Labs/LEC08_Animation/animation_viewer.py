@@ -21,15 +21,21 @@ def row_frames(row, columns):
 	return [frame_rect(row, column) for column in columns]
 
 
+LEDGE_WOBBLE_FRAMES = row_frames(3, range(12))
+LEDGE_HANG_FRAMES = row_frames(3, range(12, 16))
+ROPE_FRAMES = row_frames(7, range(11))
+CROUCH_STAND_FRAMES = row_frames(7, range(11, 16))
+
+
 ANIMATIONS = [
 	{'name': '걷기 / 수영', 'frames': row_frames(0, range(16))},
 	{'name': '숙이기 / 숙여서 이동', 'frames': row_frames(1, range(16))},
 	{'name': '피해 / 쓰러지기', 'frames': row_frames(2, range(4))},
-	{'name': '절벽 비틀거림 / 매달리기', 'frames': row_frames(3, range(16))},
+	{'name': '절벽 비틀거림 / 매달리기', 'frames': LEDGE_WOBBLE_FRAMES + LEDGE_HANG_FRAMES},
 	{'name': '던지기', 'frames': row_frames(4, range(16))},
 	{'name': '문 들어가기 / 나오기', 'frames': row_frames(5, range(16))},
 	{'name': '사다리 / 밀기', 'frames': row_frames(6, range(16))},
-	{'name': '밧줄 / 숙였다 일어서기', 'frames': row_frames(7, range(16))},
+	{'name': '밧줄 / 숙였다 일어서기', 'frames': ROPE_FRAMES + CROUCH_STAND_FRAMES},
 	{'name': '위 보기', 'frames': row_frames(8, range(16))},
 	{'name': '점프', 'frames': row_frames(9, range(16))},
 	{'name': '유령 이동 / 발사', 'frames': row_frames(10, range(16))},
