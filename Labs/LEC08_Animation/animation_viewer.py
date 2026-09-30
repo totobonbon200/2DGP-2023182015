@@ -42,6 +42,21 @@ ANIMATIONS = [
 	{'name': '낙하', 'frames': row_frames(11, range(16))},
 ]
 
+KEY_TO_ANIMATION = {
+	SDLK_1: 0,
+	SDLK_2: 1,
+	SDLK_3: 2,
+	SDLK_4: 3,
+	SDLK_5: 4,
+	SDLK_6: 5,
+	SDLK_7: 6,
+	SDLK_8: 7,
+	SDLK_9: 8,
+	SDLK_0: 9,
+	SDLK_KP_1: 10,
+	SDLK_KP_2: 11,
+}
+
 
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
