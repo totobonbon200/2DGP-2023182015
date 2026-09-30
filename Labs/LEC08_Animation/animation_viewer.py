@@ -68,6 +68,18 @@ def reset_playback_state(animation_index, now):
 	}
 
 
+def handle_keydown(key, state, now):
+	if key == SDLK_ESCAPE:
+		return False, state
+
+	animation_index = KEY_TO_ANIMATION.get(key)
+	if key == SDLK_UP:
+		animation_index = 8
+	if animation_index is not None:
+		state = reset_playback_state(animation_index, now)
+	return True, state
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
