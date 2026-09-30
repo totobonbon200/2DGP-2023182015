@@ -106,7 +106,23 @@ def advance_playback(state, now):
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
-	close_canvas()
+	state = reset_playback_state(0, monotonic())
+	running = True
+
+	try:
+		while running:
+			now = monotonic()
+			for event in get_events():
+				if event.type == SDL_QUIT:
+					running = False
+				elif event.type == SDL_KEYDOWN:
+					running, state = handle_keydown(event.key, state, now)
+
+			if running:
+				state = advance_playback(state, now)
+				delay(1 / 60)
+	finally:
+		close_canvas()
 
 
 if __name__ == '__main__':
