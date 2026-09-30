@@ -7,16 +7,16 @@ Build `animation_viewer.py` with `pico2d` and `spelunky_animation_sheet.png`. Sh
 ## Sprite Sheet Mapping
 
 - The source image is 2048 x 2048 pixels.
-- Use the 12 described horizontal animation bands in order, starting with the top band. Treat 128 x 128 pixels as the initial grid unit, but represent every frame as an explicit `(x, y, width, height)` rectangle so frame counts and sizes can differ.
-- Verify the crop bounds against the actual sheet while implementing; do not assume every band contains 16 usable frames. Omit empty cells and the unused frames called out below.
+- Use the first 12 horizontal bands in order, starting with the top band. The measured grid unit is 128 x 128 pixels. Represent every frame as an explicit `(x, y, width, height)` rectangle.
+- Skip transparent cells. The occupied source columns are: row 1 `0-15`; row 2 `0-11, 13-14`; row 3 `0-14`; row 4 `0-14`; row 5 `0-10, 12-15`; row 6 `0-14`; row 7 `0-11, 13-14`; row 8 `0-14`; row 9 `0-14`; row 10 `0-15`; row 11 `0-15`; row 12 `0-10`.
 - Group 1: walking, followed by the swimming frames on the right.
 - Group 2: crouching and moving forward while crouched.
 - Group 3: taking damage and falling; use only frames 1 through 4.
-- Group 4: the rightmost four frames are hanging from a ledge; the preceding frames are wobbling at an edge.
+- Group 4: columns 0-10 wobble at the edge; the rightmost four occupied frames (columns 11-14) hang from a ledge.
 - Group 5: throwing an object.
 - Group 6: entering and exiting a door.
 - Group 7: ladder movement on the left, pushing on the right.
-- Group 8: rope climbing on the left; use the rightmost five frames for crouching and standing.
+- Group 8: columns 0-9 climb a rope; use the rightmost five occupied frames (columns 10-14) for crouching and standing.
 - Group 9: looking up, selected with the up-arrow key.
 - Group 10: jumping, excluding rope frames.
 - Group 11: ghost movement and shooting after death.
@@ -63,6 +63,6 @@ Build `animation_viewer.py` with `pico2d` and `spelunky_animation_sheet.png`. Sh
 - Pylance resolves `pico2d` in the selected Python 3.13 environment.
 - Syntax validation passes for `animation_viewer.py`.
 - The sheet loads from the script's own directory, independent of the shell working directory.
-- Every mapped frame rectangle stays inside the 2048 x 2048 source image.
+- Per-group frame counts are 16, 14, 4, 15, 15, 15, 14, 15, 15, 16, 16, and 11; every mapped frame rectangle stays inside the 2048 x 2048 source image.
 - Number-key mapping covers all 12 groups; group 3 has four frames; group 4 reserves its rightmost four frames; group 8 reserves its rightmost five frames.
 - Playback advances after five loops, waits one second, and wraps after group 12.
