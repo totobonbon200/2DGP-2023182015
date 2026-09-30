@@ -12,6 +12,20 @@ FRAME_DURATION = 0.1
 REPEAT_COUNT = 5
 PAUSE_DURATION = 1.0
 ASSET_PATH = Path(__file__).with_name('spelunky_animation_sheet.png')
+ROW_COLUMNS = {
+	0: range(16),
+	1: tuple(range(12)) + (13, 14),
+	2: range(15),
+	3: range(15),
+	4: tuple(range(11)) + tuple(range(12, 16)),
+	5: range(15),
+	6: tuple(range(12)) + (13, 14),
+	7: range(15),
+	8: range(15),
+	9: range(16),
+	10: range(16),
+	11: range(11),
+}
 
 
 def frame_rect(row, column, width=FRAME_SIZE, height=FRAME_SIZE):
@@ -19,29 +33,32 @@ def frame_rect(row, column, width=FRAME_SIZE, height=FRAME_SIZE):
 	return column * FRAME_SIZE, bottom, width, height
 
 
-def row_frames(row, columns):
+
+def row_frames(row, columns=None):
+	if columns is None:
+		columns = ROW_COLUMNS[row]
 	return [frame_rect(row, column) for column in columns]
 
 
-LEDGE_WOBBLE_FRAMES = row_frames(3, range(12))
-LEDGE_HANG_FRAMES = row_frames(3, range(12, 16))
-ROPE_FRAMES = row_frames(7, range(11))
-CROUCH_STAND_FRAMES = row_frames(7, range(11, 16))
+LEDGE_WOBBLE_FRAMES = row_frames(3, range(11))
+LEDGE_HANG_FRAMES = row_frames(3, range(11, 15))
+ROPE_FRAMES = row_frames(7, range(10))
+CROUCH_STAND_FRAMES = row_frames(7, range(10, 15))
 
 
 ANIMATIONS = [
-	{'name': '걷기 / 수영', 'frames': row_frames(0, range(16))},
-	{'name': '숙이기 / 숙여서 이동', 'frames': row_frames(1, range(16))},
+	{'name': '걷기 / 수영', 'frames': row_frames(0)},
+	{'name': '숙이기 / 숙여서 이동', 'frames': row_frames(1)},
 	{'name': '피해 / 쓰러지기', 'frames': row_frames(2, range(4))},
 	{'name': '절벽 비틀거림 / 매달리기', 'frames': LEDGE_WOBBLE_FRAMES + LEDGE_HANG_FRAMES},
-	{'name': '던지기', 'frames': row_frames(4, range(16))},
-	{'name': '문 들어가기 / 나오기', 'frames': row_frames(5, range(16))},
-	{'name': '사다리 / 밀기', 'frames': row_frames(6, range(16))},
+	{'name': '던지기', 'frames': row_frames(4)},
+	{'name': '문 들어가기 / 나오기', 'frames': row_frames(5)},
+	{'name': '사다리 / 밀기', 'frames': row_frames(6)},
 	{'name': '밧줄 / 숙였다 일어서기', 'frames': ROPE_FRAMES + CROUCH_STAND_FRAMES},
-	{'name': '위 보기', 'frames': row_frames(8, range(16))},
-	{'name': '점프', 'frames': row_frames(9, range(16))},
-	{'name': '유령 이동 / 발사', 'frames': row_frames(10, range(16))},
-	{'name': '낙하', 'frames': row_frames(11, range(16))},
+	{'name': '위 보기', 'frames': row_frames(8)},
+	{'name': '점프', 'frames': row_frames(9)},
+	{'name': '유령 이동 / 발사', 'frames': row_frames(10)},
+	{'name': '낙하', 'frames': row_frames(11)},
 ]
 
 KEY_TO_ANIMATION = {
