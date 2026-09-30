@@ -82,6 +82,21 @@ def handle_keydown(key, state, now):
 	return True, state
 
 
+def advance_playback(state, now):
+	if now - state['last_frame_time'] < FRAME_DURATION:
+		return state
+
+	state['last_frame_time'] = now
+	state['frame_index'] += 1
+	if state['frame_index'] >= len(ANIMATIONS[state['animation_index']]['frames']):
+		state['frame_index'] = 0
+		state['repeat_count'] += 1
+		if state['repeat_count'] >= REPEAT_COUNT:
+			state['repeat_count'] = 0
+			state['pause_until'] = now + PAUSE_DURATION
+	return state
+
+
 def main():
 	open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 	sprite_sheet = load_image(str(ASSET_PATH))
