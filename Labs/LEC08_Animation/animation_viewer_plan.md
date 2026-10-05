@@ -1,68 +1,68 @@
-# Animation Viewer Plan
+# 애니메이션 뷰어 계획
 
-## Goal
+## 목표
 
-Build `animation_viewer.py` with `pico2d` and `spelunky_animation_sheet.png`. Show one animation group at a time in the center of the canvas, enlarge the character to a useful on-screen size, and keep cycling through all 12 groups. Each group plays five times, pauses for one second, then advances. Number keys select a group directly.
+`pico2d`와 `spelunky_animation_sheet.png`를 사용해 `animation_viewer.py`를 작성한다. 한 번에 하나의 애니메이션 그룹을 캔버스 중앙에 표시하고, 캐릭터를 화면에서 알아보기 좋은 크기로 확대한다. 12개 그룹을 차례로 계속 재생하며, 각 그룹은 5회 반복한 뒤 1초간 멈추고 다음 그룹으로 넘어간다. 숫자키로 그룹을 직접 선택할 수 있어야 한다.
 
-## Sprite Sheet Mapping
+## 스프라이트 시트 배치
 
-- The source image is 2048 x 2048 pixels.
-- Use the first 12 horizontal bands in order, starting with the top band. The measured grid unit is 128 x 128 pixels. Represent every frame as an explicit `(x, y, width, height)` rectangle.
-- Skip transparent cells. The occupied source columns are: row 1 `0-15`; row 2 `0-11, 13-14`; row 3 `0-14`; row 4 `0-14`; row 5 `0-10, 12-15`; row 6 `0-14`; row 7 `0-11, 13-14`; row 8 `0-14`; row 9 `0-14`; row 10 `0-15`; row 11 `0-15`; row 12 `0-10`.
-- Group 1: walking, followed by the swimming frames on the right.
-- Group 2: crouching and moving forward while crouched.
-- Group 3: taking damage and falling; use only frames 1 through 4.
-- Group 4: columns 0-10 wobble at the edge; the rightmost four occupied frames (columns 11-14) hang from a ledge.
-- Group 5: throwing an object.
-- Group 6: entering and exiting a door.
-- Group 7: ladder movement on the left, pushing on the right.
-- Group 8: columns 0-9 climb a rope; use the rightmost five occupied frames (columns 10-14) for crouching and standing.
-- Group 9: looking up, selected with the up-arrow key.
-- Group 10: jumping, excluding rope frames.
-- Group 11: ghost movement and shooting after death.
-- Group 12: falling between platforms.
+- 원본 이미지 크기는 2048 x 2048 픽셀이다.
+- 위쪽 행부터 순서대로 첫 12개 가로 행을 사용한다. 확인한 기본 프레임 격자 크기는 128 x 128 픽셀이다. 각 프레임은 `(x, y, width, height)` 사각형으로 명시한다.
+- 투명한 셀은 건너뛴다. 행별로 내용이 있는 열은 다음과 같다: 1행 `0-15`; 2행 `0-11, 13-14`; 3행 `0-14`; 4행 `0-14`; 5행 `0-10, 12-15`; 6행 `0-14`; 7행 `0-11, 13-14`; 8행 `0-14`; 9행 `0-14`; 10행 `0-15`; 11행 `0-15`; 12행 `0-10`.
+- 그룹 1: 걷기 동작에 이어 오른쪽의 수영 동작을 재생한다.
+- 그룹 2: 숙이기와 숙인 채 앞으로 이동하기.
+- 그룹 3: 피해를 입고 쓰러지기. 1~4번 프레임만 사용한다.
+- 그룹 4: 0~10열은 절벽 끝에서 비틀거리는 동작이다. 가장 오른쪽의 유효 프레임 4개(11~14열)는 절벽에 매달리는 동작이다.
+- 그룹 5: 물건 던지기.
+- 그룹 6: 문에 들어가고 나오기.
+- 그룹 7: 왼쪽은 사다리 이동, 오른쪽은 밀기 동작이다.
+- 그룹 8: 0~9열은 밧줄 타기 동작이다. 가장 오른쪽의 유효 프레임 5개(10~14열)는 숙였다 일어서기 동작이다.
+- 그룹 9: 위 보기. 위쪽 화살표로 선택한다.
+- 그룹 10: 밧줄 동작을 제외한 점프.
+- 그룹 11: 죽은 뒤 유령 상태에서 움직이고 발사하기.
+- 그룹 12: 중간에서 떨어지는 동작.
 
-## Controls
+## 조작
 
-- Top-row `1` through `9` select groups 1 through 9.
-- Top-row `0` selects group 10.
-- Numpad `1` and `2` select groups 11 and 12.
-- Up arrow selects the look-up pose/group (group 9).
-- Escape or closing the window exits cleanly.
+- 키보드 숫자열 `1`~`9`로 그룹 1~9를 선택한다.
+- 숫자열 `0`으로 그룹 10을 선택한다.
+- 숫자패드 `1`, `2`로 그룹 11, 12를 선택한다.
+- 위쪽 화살표로 위 보기 동작(그룹 9)을 선택한다.
+- `Escape` 키를 누르거나 창을 닫으면 프로그램을 정상 종료한다.
 
-## Implementation Steps
+## 점진적 구현 단계
 
-1. Commit this plan and record the source asset path.
-2. Start the `pico2d` viewer module.
-3. Define the canvas dimensions and frame rate.
-4. Load the Spelunky sprite sheet from the script directory.
-5. Define named frame rectangles and animation groups.
-6. Add the 12 group labels and playback order.
-7. Define the number-key to group mapping.
-8. Initialize selection, frame, repeat, and pause state.
-9. Poll `pico2d` window events once per loop.
-10. Handle window-close and Escape events.
-11. Advance the selected group's frame cursor.
-12. Keep frame timing independent of canvas redraw details.
-13. Count completed group repetitions.
-14. Pause for one second after five repetitions.
-15. Advance to the next group after its pause.
-16. Wrap the automatic sequence from group 12 to group 1.
-17. Center the character on the canvas.
-18. Calculate a display size that occupies at least half the canvas height.
-19. Draw the current source rectangle with `pico2d` clipping.
-20. Clear and update the canvas on every frame.
-21. Reset playback state when a number key selects another group.
-22. Make manual selection continue through the same automatic order.
-23. Close the canvas on normal exit.
-24. Check all source rectangles and special frame-count limits.
-25. Run syntax and focused runtime checks, then review the final diff.
+1. 계획 문서를 커밋하고 원본 스프라이트 파일 경로를 기록한다.
+2. `pico2d` 뷰어 모듈의 기본 구조를 만든다.
+3. 캔버스 크기와 프레임 재생 속도를 정한다.
+4. 파이썬 파일이 있는 폴더에서 Spelunky 스프라이트 시트를 불러온다.
+5. 이름이 있는 프레임 사각형과 애니메이션 그룹을 정의한다.
+6. 12개 그룹의 이름과 재생 순서를 정한다.
+7. 숫자키와 애니메이션 그룹의 대응 관계를 정의한다.
+8. 선택 그룹, 현재 프레임, 반복 횟수, 대기 상태를 초기화한다.
+9. 반복할 때마다 `pico2d` 창 이벤트를 확인한다.
+10. 창 닫기와 `Escape` 입력을 처리한다.
+11. 선택된 그룹의 프레임 위치를 다음으로 이동한다.
+12. 프레임 시간 계산을 캔버스 다시 그리기와 분리한다.
+13. 완료한 애니메이션 반복 횟수를 센다.
+14. 5회 반복한 뒤 1초간 대기한다.
+15. 대기가 끝나면 다음 그룹으로 이동한다.
+16. 12번 그룹 다음에는 1번 그룹으로 돌아간다.
+17. 캐릭터를 캔버스 중앙에 배치한다.
+18. 캐릭터가 캔버스 높이의 절반 이상을 차지하도록 표시 크기를 계산한다.
+19. `pico2d`의 프레임 자르기 기능으로 현재 원본 사각형을 그린다.
+20. 매 프레임마다 캔버스를 지우고 갱신한다.
+21. 숫자키로 그룹을 바꾸면 재생 상태를 초기화한다.
+22. 수동 선택 뒤에도 자동 재생 순서가 이어지게 한다.
+23. 정상 종료 시 캔버스를 닫는다.
+24. 모든 원본 사각형의 범위와 특수 프레임 수 제한을 확인한다.
+25. 구문 및 동작 범위 검사를 실행하고 최종 변경 사항을 검토한다.
 
-## Verification
+## 검증 항목
 
-- Pylance resolves `pico2d` in the selected Python 3.13 environment.
-- Syntax validation passes for `animation_viewer.py`.
-- The sheet loads from the script's own directory, independent of the shell working directory.
-- Per-group frame counts are 16, 14, 4, 15, 15, 15, 14, 15, 15, 16, 16, and 11; every mapped frame rectangle stays inside the 2048 x 2048 source image.
-- Number-key mapping covers all 12 groups; group 3 has four frames; group 4 reserves its rightmost four frames; group 8 reserves its rightmost five frames.
-- Playback advances after five loops, waits one second, and wraps after group 12.
+- 선택된 Python 3.13 환경에서 Pylance가 `pico2d`를 정상적으로 찾는다.
+- `animation_viewer.py`의 구문 검사를 통과한다.
+- 터미널의 현재 폴더와 관계없이 파이썬 파일 기준 경로에서 스프라이트 시트를 불러온다.
+- 그룹별 프레임 수는 16, 14, 4, 15, 15, 15, 14, 15, 15, 16, 16, 11이다. 모든 프레임 사각형이 2048 x 2048 원본 이미지 안에 포함되는지 확인한다.
+- 숫자키가 12개 그룹 전체에 연결되는지 확인한다. 3번 그룹은 네 프레임, 4번 그룹은 가장 오른쪽 네 프레임, 8번 그룹은 가장 오른쪽 다섯 프레임을 사용하는지 확인한다.
+- 각 그룹이 5회 반복된 뒤 1초간 대기하고, 12번 그룹 다음에 1번 그룹으로 돌아가는지 확인한다.
